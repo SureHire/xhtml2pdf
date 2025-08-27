@@ -1,77 +1,52 @@
 XHTML2PDF
 =========
 
+.. image:: https://img.shields.io/pypi/v/xhtml2pdf?label=PyPI&logo=PyPI&logoColor=white&color=blue
+    :target: https://pypi.python.org/pypi/xhtml2pdf
+    :alt: PyPI version
 
-.. image:: https://travis-ci.org/xhtml2pdf/xhtml2pdf.svg
-    :target: https://travis-ci.org/xhtml2pdf/xhtml2pdf
+.. image:: https://img.shields.io/pypi/pyversions/xhtml2pdf?label=Python&logo=Python&logoColor=white
+    :target: https://www.python.org/downloads
+    :alt: Python versions
 
-.. image:: https://ci.appveyor.com/api/projects/status/y2mj843lpptwars9/branch/master?svg=true
-    :target: https://ci.appveyor.com/project/LegoStormtroopr/xhtml2pdf/branch/master
+.. image:: https://img.shields.io/coveralls/github/xhtml2pdf/xhtml2pdf?label=Coveralls&logo=Coveralls&logoColor=white
+    :target: https://coveralls.io/github/xhtml2pdf/xhtml2pdf
+    :alt: Coveralls
 
-.. image:: https://coveralls.io/repos/xhtml2pdf/xhtml2pdf/badge.svg?branch=develop&service=github
-        :target: https://coveralls.io/github/xhtml2pdf/xhtml2pdf?branch=develop
-        :alt: Coveralls
-
-.. image:: https://badge.fury.io/py/xhtml2pdf.svg
-   :target: https://pypi.python.org/pypi/xhtml2pdf
-
-.. image:: https://readthedocs.org/projects/xhtml2pdf/badge/?version=latest
+.. image:: https://img.shields.io/readthedocs/xhtml2pdf?label=Read%20the%20Docs&logo=read%20the%20docs&logoColor=white
    :target: http://xhtml2pdf.readthedocs.io/en/latest/?badge=latest
-   :alt: Documentation Status
+   :alt: Read the Docs
 
-The current release of xhtml2pdf is xhtml2pdf **0.2.1** which is the first stable
-version that has Python 3 support. 
-As with all open-source software, its use in production depends
-on many factors, so be aware that you may find issues in some cases.
-**Big thanks** to everyone
-who has worked on this project so far and to those who help maintain it.
+|
 
+Release Notes can be found here: `Release Notes <https://xhtml2pdf.readthedocs.io/en/latest/release-notes.html>`__
+As with all open-source software, its use in production depends on many factors, so be aware that you may find issues in some cases.
 
-
-What else can you use instead?
-==============================
-
-Go use WeasyPrint, the codebase is pretty, it has a different features, and it
-does a lot of what xhtml2pdf does and it is easier to use in many circumstances.
-
-`WeasyPrint <http://weasyprint.org/>`__
-
-
-Documentation?
-==============
-
-xhtml2pdf has some documentation, and we could use your help improving it.
-A good place to start is ``doc/usage.rst``.
-
-Or also see in `Readthedocs <http://xhtml2pdf.readthedocs.io//>`__
-
-
-Call for testing
-================
-
-This project is heavily dependent on getting its test coverage up!
-Currently, Python 3 support is being worked on and many refactors and suggestions are potentially coming in.
-Furthermore, parts of the codebase could do well with cleanups and refactoring.
-
-If you benefit from xhtml2pdf, perhaps `look at the test coverage <https://coveralls.io/github/xhtml2pdf/xhtml2pdf?branch=master>`__ and identify parts that are yet untouched.
-
+**Big thanks** to everyone who has worked on this project so far and to those who help maintain it.
 
 About
 =====
 
-``xhtml2pdf`` is a html2pdf converter using the ReportLab Toolkit,
-the HTML5lib and pyPdf. It supports HTML 5 and CSS 2.1 (and some of CSS 3).
-It is completely written in pure Python so it is platform independent.
+xhtml2pdf is a HTML to PDF converter using Python, the ReportLab Toolkit, html5lib and pypdf. It supports HTML5 and CSS 2.1 (and some of CSS 3). It is completely written in pure Python, so it is platform independent.
 
-The main benefit of this tool that a user with Web skills like HTML and CSS
-is able to generate PDF templates very quickly without learning new
-technologies.
+The main benefit of this tool is that a user with web skills like HTML and CSS is able to generate PDF templates very quickly without learning new technologies.
+
+Please consider support this project using `Patreon <https://www.patreon.com/xhtml2pdf>`__ or Bitcoins: ``bc1qmr0skzwx5scyvh2ql28f7gfh6l65ua250qv227``
+
+
+
+Documentation
+==============
+
+The documentation of xhtml2pdf is available at `Read the Docs <http://xhtml2pdf.readthedocs.io>`__.
+
+And we could use your help improving it! A good place to start is ``doc/source/usage.rst``.
 
 
 Installation
 ============
 
-This is a typical Python library and is installed using pip::
+This is a typical Python library and can be installed using pip::
 
     pip install xhtml2pdf
 
@@ -79,10 +54,35 @@ This is a typical Python library and is installed using pip::
 Requirements
 ============
 
-Python 2.7+. Only Python 3.4+ is tested and guaranteed to work.
+Only Python 3.8+ is tested and guaranteed to work.
 
-All additional requirements are listed in ``requirements.txt`` file and are
-installed automatically using the ``pip install xhtml2pdf`` method.
+All mandatory requirements are listed in the ``pyproject.toml`` file and are installed automatically using the ``pip install xhtml2pdf`` method.
+
+As PDF library we depend on reportlab, which needs a rendering backend to generate bitmaps and vector graphic formats.
+For more information about this, have a look at the `reportlab docs <https://docs.reportlab.com/install/open_source_installation/>`__.
+
+The recommended choice is the `cairo graphics library <https://cairographics.org/>`__ which has to be installed system-wide e.g. via the OS package manager
+in combination with the ``PyCairo`` extra dependency:
+
+    pip install xhtml2pdf[pycairo]
+
+Alternatively, the legacy ``RenderPM`` can be used by installing:
+
+    pip install xhtml2pdf[renderpm]
+
+
+Alternatives
+============
+
+You can try `WeasyPrint <http://weasyprint.org>`__. The codebase is pretty, it has different features and it does a lot of what xhtml2pdf does.
+
+
+Call for testing
+================
+
+This project is heavily dependent on getting its test coverage up! Furthermore, parts of the codebase could do well with cleanups and refactoring.
+
+If you benefit from xhtml2pdf, perhaps look at the `test coverage <https://coveralls.io/github/xhtml2pdf/xhtml2pdf>`__ and identify parts that are yet untouched.
 
 
 Development environment
@@ -92,90 +92,83 @@ Development environment
 
     sudo easy_install pip
 
-   For more information about ``pip`` refer to http://www.pip-installer.org/.
+   For more information about ``pip`` refer to http://www.pip-installer.org
 
-#. I will recommend using ``virtualenv`` for development. This is great to have separate environment for
-   each project, keeping the dependencies for multiple projects separated::
+#. We will recommend using ``venv`` for development.
 
-    sudo pip install virtualenv
+#. Create a virtual environment for the project. This can be inside the project directory, but cannot be under version control::
 
-   For more information about ``virtualenv`` refer to http://www.virtualenv.org/
+    python -m venv .venv
 
-#. Create virtualenv for the project. This can be inside the project directory, but cannot be under
-   version control::
+#. Activate your virtual environment::
 
-    virtualenv --distribute xhtml2pdfenv --python=python2
+    source .venv/bin/activate
 
-#. Activate your virtualenv::
-
-    source xhtml2pdfenv/bin/activate
-
-   Later to deactivate use::
+   Later to deactivate it use::
 
     deactivate
 
-#. Next step will be to install/upgrade dependencies from ``requirements.txt`` file::
+#. The next step will be to install/upgrade dependencies from the ``pyproject.toml`` file::
 
-    pip install -r requirements.txt
+    pip install -e .[test,docs,build]
 
 #. Run tests to check your configuration::
 
-    nosetests --with-coverage
+    tox
 
-   You should have a log with success status::
+   You should have a log with the following success status::
 
-    Ran 36 tests in 0.322s
-
-    OK
+    congratulations :) (75.67 seconds)
 
 
 Python integration
 ==================
 
-Some simple demos of how to integrate xhtml2pdf into
-a Python program may be found here: test/simple.py
+Some simple demos of how to integrate xhtml2pdf into a Python program may be found here: ``test/simple.py``
 
 
 Running tests
 =============
 
-Two different test suites are available to assert xhtml2pdf works reliably:
+Two different test suites are available to assert that xhtml2pdf works reliably:
 
 #. Unit tests. The unit testing framework is currently minimal, but is being
-   improved on a daily basis (contributions welcome). They should run in the
+   improved on a regular basis (contributions welcome). They should run in the
    expected way for Python's unittest module, i.e.::
 
-        nosetests --with-coverage (or your personal favorite)
+        tox
 
 #. Functional tests. Thanks to mawe42's super cool work, a full functional
-   test suite lives in testrender/.
+   test suite is available at ``testrender/``.
 
+You can run them using make
+
+.. code:: bash
+
+        make test       # run tests
+        make test-ref   # generate reference data for testrender
+        make test-all   # Run all test using tox
 
 Contact
 =======
 
-This project is community-led! To strengthen it, please hang out on IRC #xhtml2pdf (Freenode)
-or join `our maling list <http://groups.google.com/group/xhtml2pdf>`__.
-
-* IRC: #xhtml2pdf on freenode
-* Mailing list: xhtml2pdf@googlegroups.com
-* Google group: http://groups.google.com/group/xhtml2pdf
+This project is community-led! Feel free to open up issues on GitHub about new ideas to improve xhtml2pdf.
 
 
 History
 =======
 
-This are the major milestones and the maintainers of the project:
+These are the major milestones and the maintainers of the project:
 
-* 2000-2007, commercial project, spirito.de, written by Dirk Holtwich
-* 2007-2010 Dirk Holtwich (project named "Pisa", project released as GPL)
+* 2000-2007 Dirk Holtwick (commercial project of spirito.de)
+* 2007-2010 Dirk Holtwick (project named "pisa", project released as GPL)
 * 2010-2012 Dirk Holtwick (project named "xhtml2pdf", changed license to Apache)
 * 2012-2015 Chris Glass (@chrisglass)
 * 2015-2016 Benjamin Bach (@benjaoming)
 * 2016-2018 Sam Spencer (@LegoStormtroopr)
-* 2018-Current Luis Zarate (@luisza) 
+* 2018-Current Luis Zarate (@luisza)
 
-For more history, see the CHANGELOG.
+For more history, see the `Release Notes <https://xhtml2pdf.readthedocs.io/en/latest/release-notes.html>`__.
 
 License
 =======
@@ -184,9 +177,7 @@ Copyright 2010 Dirk Holtwick, holtwick.it
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
+You may obtain a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
